@@ -60,6 +60,7 @@
     <Compile Include="Command\Commands.cs" />
     <Compile Include="Command\Ingredient.cs" />
     <Compile Include="Command\IngredientList.cs" />
+    <Compile Include="Decorator\Cheese.cs" />
     <Compile Include="Gameplay.xaml.cs">
       <DependentUpon>Gameplay.xaml</DependentUpon>
     </Compile>

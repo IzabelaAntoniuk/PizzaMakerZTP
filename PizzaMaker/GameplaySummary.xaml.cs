@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaMaker.Decorator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,15 +23,42 @@ namespace PizzaMaker
         private Visibility[] tablicaa = new Visibility[6];
         private int levelNumber = 0;
         ContentControl newContent = new ContentControl();
+        UserControl newUC = new UserControl();
 
-        public GameplaySummary(Visibility[] tab, int levelNumber, ContentControl newContent, int decision)
+        public GameplaySummary(bool[] tab, int levelNumber, ContentControl newContent, int decision)
         {
             InitializeComponent();
-            this.tablicaa = tab;
-            yourHam.Visibility = tab[0];
-            yourCheese.Visibility = tab[1];
+            for (int i = 0; i < tablicaa.Count(); i++)
+                tablicaa[i] = Visibility.Hidden;
+            //this.tablicaa = tab;
+            //yourHam.Visibility = tab[0];
+            //yourCheese.Visibility = tab[1];
             this.levelNumber = levelNumber;
             this.newContent = newContent;
+
+            IPizza yourPizza = new Pizza(tablicaa);
+
+            if (tab[0] == true)
+            {
+                yourPizza = new Ham(yourPizza);
+                yourPizza.addIngredient();
+            }
+
+            if (tab[1] == true)
+            {
+                yourPizza = new Cheese(yourPizza);
+                yourPizza.addIngredient();
+            }
+
+            tablicaa = yourPizza.getIngredients();
+
+            //yourPizza = new Ham(yourPizza);
+           // yourHam.Visibility = yourPizza.addIngredient();
+            //tablicaa = yourPizza.getIngredients();
+
+            yourHam.Visibility = tablicaa[0];
+            yourCheese.Visibility = tablicaa[1];
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,5 +67,6 @@ namespace PizzaMaker
             newContent.Content = new Gameplay(1, levelNumber, newContent);
             this.Close();
         }
+
     }
 }

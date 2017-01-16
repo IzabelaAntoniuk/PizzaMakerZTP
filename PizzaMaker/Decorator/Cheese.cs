@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace PizzaMaker.Decorator
 {
-    class Ham : PizzaDecorator
+    class Cheese : PizzaDecorator
     {
-        public Ham(IPizza pizza)
+        public Cheese(IPizza pizza)
         {
             base.pizza = pizza;
         }
@@ -21,7 +21,7 @@ namespace PizzaMaker.Decorator
 
         public override void addIngredient()
         {
-            base.pizza.addAdditions(0);
+            base.pizza.addAdditions(1);
         }
 
         public override Visibility[] getIngredients()

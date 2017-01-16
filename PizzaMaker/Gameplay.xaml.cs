@@ -30,6 +30,7 @@ namespace PizzaMaker
         int levelNumber = 1;
         ContentControl newContent = new ContentControl();
         int decision = 0;
+        bool[] tablica = new bool[6];
 
         private IngredientList ingredList = new IngredientList();
 
@@ -172,9 +173,15 @@ namespace PizzaMaker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Visibility[] tablica = new Visibility[6];
-            tablica[0] = yourHam.Visibility;
-            tablica[1] = yourCheese.Visibility;
+            //Visibility[] tablica = new Visibility[6];
+            //tablica[0] = yourHam.Visibility;
+            //tablica[1] = yourCheese.Visibility;
+            
+            if (!hamButton.IsEnabled)
+                tablica[0] = true;
+            if (!cheeseButton.IsEnabled)
+                tablica[1] = true;
+
             GameplaySummary gameplaySummary = new GameplaySummary(tablica, levelNumber, newContent, decision);
             gameplaySummary.Show();
         }
