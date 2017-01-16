@@ -36,7 +36,7 @@ namespace PizzaMaker
             else if (hardLevel.IsChecked == true)
                 decision = 2;
             
-            thisContent.Content = new Gameplay(decision);
+            thisContent.Content = new Gameplay(decision, 1, thisContent);
         }
     }
 }

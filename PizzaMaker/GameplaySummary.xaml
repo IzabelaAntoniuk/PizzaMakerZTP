@@ -1,0 +1,50 @@
+﻿<Window x:Class="PizzaMaker.GameplaySummary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaMaker"
+        xmlns:moj="clr-namespace:PizzaMaker"
+        mc:Ignorable="d"
+        Title="GameplaySummary" Height="250" Width="600" Background="SeaShell">
+
+    <Window.Resources>
+        <local:ImagePathConverter x:Key="ImagePathConverter" />
+    </Window.Resources>
+
+    <Border BorderThickness="1" BorderBrush="LightGray">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" FontWeight="ExtraBold" Content="Spróbuj stworzyć taką samą pizzę:" Width="300" Height="30" FontFamily="Tw Cen MT"></Label>
+            <Image x:Name="pizzaImgTip" Grid.Row="1" Grid.Column="0" Source="Images/pizza.png" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
+
+            <Label Grid.Row="0" Grid.Column="1" FontWeight="ExtraBold" Content="Twoja pizza:" Width="300" Height="30" FontFamily="Tw Cen MT">
+                </Label>
+            <Image Grid.Row="1" Grid.Column="1" Source="Images/pizza.png" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
+            <Image Grid.Row="1" Grid.Column="1" x:Name="yourCheese" Source="Images/cheese.png" Visibility="Hidden" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
+            <Image Grid.Row="1" Grid.Column="1" x:Name="yourHam" Source="Images/ham.png" Visibility="Hidden"  Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
+
+            <Label Grid.Row="0" Grid.Column="2">Uzyskałeś tyle i tyle punktów lamo</Label>
+
+            <Image Grid.Row="1" Grid.Column="2" Source="{Binding Path=ImagePath, Converter={StaticResource ImagePathConverter}}"></Image>
+            
+            <Button Grid.Row="2" Grid.Column="2" Click="Button_Click">Halp</Button>
+        </Grid>
+        
+        
+    </Border>
+    
+    
+    
+</Window>

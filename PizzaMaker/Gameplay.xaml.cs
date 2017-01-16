@@ -27,9 +27,11 @@ namespace PizzaMaker
         DispatcherTimer _timer2;
         TimeSpan _time;
         TimeSpan _time2;
+        int levelNumber = 1;
+        ContentControl newContent = new ContentControl();
+        int decision = 0;
 
         private IngredientList ingredList = new IngredientList();
-        ListCollectionView view;
 
         public IngredientList ingredientList
         {
@@ -43,15 +45,22 @@ namespace PizzaMaker
             }
         }
 
-        public Gameplay(int decision)
+        public Gameplay(int decision, int levelNumber, ContentControl newContent)
         {
+            this.newContent = newContent;
+            this.decision = decision;
+            this.levelNumber = levelNumber;
             AbstractLevel levelType = new EasyLevel();
             if (decision == 1)
                 levelType = new EasyLevel();
             else if (decision == 2)
                 levelType = new HardLevel();
 
-            levelType.setGame();
+            levelType.setGame(levelNumber);
+            MessageBox.Show(levelType.levelNumber);
+            //this.label.Content = "hhe";
+            //text.Text = levelType.levelNumber;
+            //levelNumberText.Content = levelType.levelNumber;
 
             InitializeComponent();
 
@@ -84,31 +93,36 @@ namespace PizzaMaker
             _timer.Start();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-        }
+        
+
+        Ingredient ingredient = new Ingredient("", "");
 
         private void hamButton_Click(object sender, RoutedEventArgs e)
         {
-            //AddIngredient dodaj = new AddIngredient(zadania);
-            //dodaj.Owner = this;
-            //dodaj.ShowDialog();
-            //MessageBox.Show("dodalam szynke wow wow");
-            Ingredient ingredient = new Ingredient("ham", "dobra szynka");
-            ing.DataContext = ingredient;
-            ingredientList.addIngredient(ingredient);
-            yourHam.Visibility = System.Windows.Visibility.Visible;
+            //Ingredient ingredient = new Ingredient("ham", "dobra szynka");
+            ingredient = new Ingredient("ham", "szynka");
+            yourHam.DataContext = ingredient;
+            //ingredientList.addIngredient(ingredient);
+            yourHam.Visibility = Visibility.Visible;
+            hamButton.IsEnabled = false;
+        }
+
+        private void cheeseButton_Click(object sender, RoutedEventArgs e)
+        {
+            ingredient = new Ingredient("cheese", "ser");
+            yourCheese.DataContext = ingredient;
+            yourCheese.Visibility = Visibility.Visible;
+            cheeseButton.IsEnabled = false;
         }
 
         private void AddIngredient(object sender, ExecutedRoutedEventArgs e)
         {
-            //AddIngredient dodaj = new AddIngredient(zadania);
-            //dodaj.Owner = this;
-            //dodaj.ShowDialog();
-            //MessageBox.Show("dodalam szynke wow wow");
-            Ingredient ingredient = new Ingredient("ham", "dobra szynka");
+            //Ingredient ingredient = new Ingredient("ham", "dobra szynka");
             ingredientList.addIngredient(ingredient);
-            yourHam.Visibility = System.Windows.Visibility.Visible;
+            if (ingredient.nazwa == "ham")
+                yourHam.Visibility = Visibility.Visible;
+            else if (ingredient.nazwa == "cheese")
+                yourCheese.Visibility = Visibility.Visible;
         }
 
         private void AddIngredientCE(object sender, CanExecuteRoutedEventArgs e)
@@ -120,7 +134,15 @@ namespace PizzaMaker
         {
             ingredientList.redoMove();
             if (ingredientList.First().nazwa == "ham")
-                yourHam.Visibility = System.Windows.Visibility.Visible;
+            {
+                yourHam.Visibility = Visibility.Visible;
+                hamButton.IsEnabled = false;
+            }
+            else if (ingredientList.First().nazwa == "cheese")
+            {
+                yourCheese.Visibility = Visibility.Visible;
+                cheeseButton.IsEnabled = false;
+            }
         }
 
         private void RedoMoveCE(object sender, CanExecuteRoutedEventArgs e)
@@ -131,7 +153,15 @@ namespace PizzaMaker
         private void UndoMove(object sender, ExecutedRoutedEventArgs e)
         {
             if (ingredientList.Last().nazwa == "ham")
-                yourHam.Visibility = System.Windows.Visibility.Hidden;
+            {
+                yourHam.Visibility = Visibility.Hidden;
+                hamButton.IsEnabled = true;
+            }
+            else if (ingredientList.Last().nazwa == "cheese")
+            {
+                yourCheese.Visibility = Visibility.Hidden;
+                cheeseButton.IsEnabled = true;
+            }
             ingredientList.undoMove();
         }
 
@@ -139,5 +169,16 @@ namespace PizzaMaker
         {
             e.CanExecute = ingredientList.unlockUndo();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility[] tablica = new Visibility[6];
+            tablica[0] = yourHam.Visibility;
+            tablica[1] = yourCheese.Visibility;
+            GameplaySummary gameplaySummary = new GameplaySummary(tablica, levelNumber, newContent, decision);
+            gameplaySummary.Show();
+        }
+
+
     }
 }

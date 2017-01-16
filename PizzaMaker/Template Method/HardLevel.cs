@@ -22,5 +22,15 @@ namespace PizzaMaker.Template_Method
         {
             tipTime = 5;
         }
+
+        protected override void setLevelNumber(int number)
+        {
+            levelNumber = "Level " + number;
+        }
+
+        protected override void setIngredientsList()
+        {
+
+        }
     }
 }

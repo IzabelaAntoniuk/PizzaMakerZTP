@@ -22,73 +22,75 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Label x:Name="label" Width="300" Height="30" FontFamily="Tw Cen MT"/>
+            <TextBox x:Name="text" Width="300" Height="30"></TextBox>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Border BorderThickness="1" BorderBrush="LightGray">
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" FontWeight="ExtraBold" Content="Spróbuj stworzyć taką samą pizzę:" Width="300" Height="30" FontFamily="Tw Cen MT"></Label>
-                        <Image x:Name="pizzaImgTip" Grid.Row="1" Source="Images/pizza.png" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
+                        <Label Grid.Row="0" FontWeight="ExtraBold" Content="Spróbuj stworzyć taką samą pizzę:" Width="300" Height="30" FontFamily="Tw Cen MT"/>
+                        <Image x:Name="pizzaImgTip" Grid.Row="1" Source="Images/pizza.png" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"/>
                     </Grid>
                 </Border>
 
                 <Grid Grid.Row="1">
                     <Grid Grid.Row="1" Margin="20">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="0" Width="50" Height="50" Background="Transparent" Click="hamButton_Click">
+                        <Button x:Name="hamButton" Grid.Row="0" Grid.Column="0" Width="50" Height="50" Background="Transparent" Click="hamButton_Click" Command="app:Commands.AddIngredient">
                             <Border BorderThickness="1" BorderBrush="LightGray">
-                                <Image x:Name="hamImg" Source="Images/ham.png" Stretch="Fill" Width="50" Height="50"></Image>
+                                <Image x:Name="hamImg" Source="Images/ham.png" Stretch="Fill" Width="50" Height="50"/>
                             </Border>
                         </Button>
 
-                        <Button Grid.Row="0" Grid.Column="1" Width="50" Height="50" Background="Transparent">
+                        <Button x:Name="cheeseButton" Grid.Row="0" Grid.Column="1" Width="50" Height="50" Background="Transparent" Click="cheeseButton_Click" Command="app:Commands.AddIngredient">
                             <Border BorderThickness="1" BorderBrush="LightGray">
-                                <Image x:Name="cheeseImg" Source="Images/cheese.png" Stretch="Fill" Width="50" Height="50"></Image>
+                                <Image x:Name="cheeseImg" Source="Images/cheese.png" Stretch="Fill" Width="50" Height="50" />
                             </Border>
                         </Button>
 
 
                         <Button Grid.Row="0" Grid.Column="2" Width="50" Height="50" Background="Transparent" Margin="5">
                             <Border BorderThickness="1" BorderBrush="LightGray">
-                                <Image Source="Images/tomato.png" Stretch="Fill" Width="50" Height="50"></Image>
+                                <Image Source="Images/tomato.png" Stretch="Fill" Width="50" Height="50"/>
                             </Border>
                         </Button>
 
                         <Button Grid.Row="1" Grid.Column="0" Width="50" Height="50" Background="Transparent">
                             <Border BorderThickness="1" BorderBrush="LightGray">
-                                <Image Source="Images/mushroom.png" Stretch="Fill" Width="50" Height="50"></Image>
+                                <Image Source="Images/mushroom.png" Stretch="Fill" Width="50" Height="50"/>
                             </Border>
                         </Button>
 
                         <Button Grid.Row="1" Grid.Column="1" Width="50" Height="50" Background="Transparent">
                             <Border BorderThickness="1" BorderBrush="LightGray">
-                                <Image Source="Images/lettuce.png" Stretch="Fill" Width="50" Height="50"></Image>
+                                <Image Source="Images/lettuce.png" Stretch="Fill" Width="50" Height="50"/>
                             </Border>
                         </Button>
 
                         <Button Grid.Row="1" Grid.Column="2" Width="50" Height="50" Background="Transparent" Margin="5">
                             <Border BorderThickness="1" BorderBrush="LightGray">
-                                <Image Source="Images/olive.png" Stretch="Fill" Width="50" Height="50"></Image>
+                                <Image Source="Images/olive.png" Stretch="Fill" Width="50" Height="50"/>
                             </Border>
                         </Button>
 
@@ -97,42 +99,41 @@
 
                 <Grid Grid.Row="2" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Name="tbTime" FontFamily="Tw Cen MT" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" x:Name="tbTime" FontFamily="Tw Cen MT" FontWeight="Bold"/>
                     <Border Grid.Row="2" Grid.Column="1" Width="100" Height="30" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Margin="0,0,10,10" HorizontalAlignment="Right">
-                        <Button Width="100" Height="30" Background="RosyBrown" FontFamily="Tw Cen MT" Margin="0,0,-2,-2" VerticalAlignment="Top" Click="Button_Click">Skończyłem!</Button>
+                        <Button Width="100" Height="30" Background="RosyBrown" FontFamily="Tw Cen MT" Margin="0,0,-2,-2" VerticalAlignment="Top" Click="Button_Click" Content="Skończyłem!"/>
                     </Border>
                 </Grid>
 
                 <Border Grid.Row="3" BorderThickness="1" BorderBrush="LightGray">
                     <Grid Grid.Row="3">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Grid Name="ing">
+                        <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
-                            
-                            <Label Grid.Row="0" FontWeight="ExtraBold" Content="Twoja pizza:" Width="300" Height="30" FontFamily="Tw Cen MT">
-                            </Label>
-                            <Image Grid.Row="1" Source="Images/pizza.png" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
-                            <Image Grid.Row="1" x:Name="yourCheese" Source="{Binding Path=ImagePath, Converter={StaticResource ImagePathConverter}}" Visibility="Hidden" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
-                            <Image Grid.Row="1" x:Name="yourHam" Source="{Binding ImagePath}" Visibility="Hidden"  Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"></Image>
+
+                            <Label Grid.Row="0" FontWeight="ExtraBold" Content="Twoja pizza:" Width="300" Height="30" FontFamily="Tw Cen MT"/>
+                            <Image Grid.Row="1" Source="Images/pizza.png" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"/>
+                            <Image Grid.Row="1" x:Name="yourCheese" Source="{Binding ImagePath}" Visibility="Hidden" Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"/>
+                            <Image Grid.Row="1" x:Name="yourHam" Source="{Binding ImagePath}" Visibility="Hidden"  Stretch="Fill" Width="80" Height="80" Margin="15,0,15,15"/>
                         </Grid>
 
                         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Name="undoButton" Command="app:Commands.UndoMove" Width="50" Height="50" Margin="10" >
-                                <Image Source="/Images/undo.png"></Image>
+                            <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" x:Name="undoButton" Command="app:Commands.UndoMove" Width="50" Height="50" Margin="10" >
+                                <Image Source="/Images/undo.png"/>
                             </Button>
-                            <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Name="redoButton" Command="app:Commands.RedoMove" Width="50" Height="50" Margin="10" >
-                                <Image Source="/Images/redo.png"></Image>
+                            <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" x:Name="redoButton" Command="app:Commands.RedoMove" Width="50" Height="50" Margin="10" >
+                                <Image Source="/Images/redo.png"/>
                             </Button>
                         </StackPanel>
 

@@ -24,12 +24,12 @@ namespace PizzaMaker.Command
         {
             get
             {
-                if (nazwa == "ser")
-                    return "cheese.png";
+                if (nazwa == "cheese")
+                    return "Images/cheese.png";
                 else if (nazwa == "ham")
                     return "Images/ham.png";
                 else
-                    return "blank.png";
+                    return "Images/blank.png";
             }
         }
     }
