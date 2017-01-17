@@ -21,10 +21,12 @@ namespace PizzaMaker
     public partial class StartGame : UserControl
     {
         private ContentControl thisContent = new ContentControl();
+        int[] pointsCount = new int[3];
 
-        public StartGame(ContentControl newContent)
+        public StartGame(ContentControl newContent, int[] pointsCount)
         {
             this.thisContent = newContent;
+            this.pointsCount = pointsCount;
             InitializeComponent();
         }
 
@@ -36,7 +38,7 @@ namespace PizzaMaker
             else if (hardLevel.IsChecked == true)
                 decision = 2;
             
-            thisContent.Content = new Gameplay(decision, 1, thisContent);
+            thisContent.Content = new Gameplay(decision, 1, thisContent, pointsCount);
         }
     }
 }

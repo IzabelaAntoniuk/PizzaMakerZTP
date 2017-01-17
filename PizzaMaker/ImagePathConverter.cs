@@ -10,6 +10,18 @@ namespace PizzaMaker
     {
         private string imageDirectory = Directory.GetCurrentDirectory();
 
+        public string ImagePath(int levelNumber)
+        {
+            if (levelNumber == 1)
+                return "Images/level1.png";
+            else if (levelNumber == 2)
+                return "Images/level2.png";
+            else if (levelNumber == 3)
+                return "Images/level3.png";
+            else
+                return "Images/blank.png";
+        }
+
         public string ImageDirectory
         {
             get { return imageDirectory; }

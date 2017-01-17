@@ -13,7 +13,7 @@ namespace PizzaMaker.Factory_Method
         {
             AbstractDrink drink = null;
 
-            /* teraz decyduje o tym, ktora czekolade wytworzy */
+            /* teraz decyduje o tym, ktora picie wytworzy */
             if (number.Equals(0))
             {
                 drink = new Tea();

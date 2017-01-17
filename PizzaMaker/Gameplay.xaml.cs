@@ -2,6 +2,7 @@
 using PizzaMaker.Template_Method;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace PizzaMaker
         int decision = 0;
         bool[] yourIngredients = new bool[6];
         private IngredientList ingredList = new IngredientList();
+        AbstractLevel levelType = new EasyLevel();
+        int[] pointsCount = new int[3];
 
         public IngredientList ingredientList
         {
@@ -45,29 +48,42 @@ namespace PizzaMaker
             }
         }
 
-        public Gameplay(int decision, int levelNumber, ContentControl newContent)
+        public Gameplay(int decision, int levelNumber, ContentControl newContent, int[] pointsCount)
         {
             this.newContent = newContent;
             this.decision = decision;
             this.levelNumber = levelNumber;
+            this.pointsCount = pointsCount;
 
-            AbstractLevel levelType = new EasyLevel();
             if (decision == 1)
                 levelType = new EasyLevel();
             else if (decision == 2)
                 levelType = new HardLevel();
 
             levelType.setGame(levelNumber);
-            MessageBox.Show(levelType.levelNumber);
 
-            InitializeComponent();
+            MessageBox.Show("Level " + levelType.levelNumber);
 
             tipLevelSeconds = TimeSpan.FromSeconds(levelType.tipTime);
             tipTimer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
+                if (tipLevelSeconds.Seconds == levelType.tipTime)
+                {
+                    if (levelType.levelNumber == 1)
+                        pizzaImgTipLevel1.Visibility = Visibility.Visible;
+                    if (levelType.levelNumber == 2)
+                        pizzaImgTipLevel2.Visibility = Visibility.Visible;
+                    if (levelType.levelNumber == 3)
+                        pizzaImgTipLevel3.Visibility = Visibility.Visible;
+                }
                 if (tipLevelSeconds == TimeSpan.Zero)
                 {
-                    pizzaImgTip.Visibility = Visibility.Hidden;
+                    if (levelType.levelNumber == 1)
+                        pizzaImgTipLevel1.Visibility = Visibility.Hidden;
+                    if (levelType.levelNumber == 2)
+                        pizzaImgTipLevel2.Visibility = Visibility.Hidden;
+                    if (levelType.levelNumber == 3)
+                        pizzaImgTipLevel3.Visibility = Visibility.Hidden;
                 }
                 tipLevelSeconds = tipLevelSeconds.Add(TimeSpan.FromSeconds(-1));
             }, Application.Current.Dispatcher);
@@ -81,12 +97,19 @@ namespace PizzaMaker
                 if (levelSeconds == TimeSpan.Zero)
                 {
                     levelTimer.Stop();
-                    // MessageBox.Show("Stop");
+                    if (doneButton.IsEnabled)
+                    {
+                        doneButton.IsEnabled = false;
+                        levelSeconds = TimeSpan.Zero;
+                        endLevel();
+                    }
                 }
                 levelSeconds = levelSeconds.Add(TimeSpan.FromSeconds(-1));
             }, Application.Current.Dispatcher);
 
             levelTimer.Start();
+
+            InitializeComponent();
         }
 
         Ingredient ingredient = new Ingredient("", "");
@@ -243,6 +266,27 @@ namespace PizzaMaker
 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
+            doneButton.IsEnabled = false;
+            endLevel();
+        }
+
+        public void savePointsList()
+        {
+            string filename = "plik.txt";
+
+            using (StreamWriter writer = new StreamWriter(filename, false))
+            {
+                for (int i = 0; i < pointsCount.Count(); i++)
+                {
+                    writer.WriteLine(pointsCount[i]);
+                }
+                writer.Flush();
+                writer.Close();
+            }
+        }
+
+        public void endLevel()
+        {
             if (!hamButton.IsEnabled)
                 yourIngredients[0] = true;
             if (!cheeseButton.IsEnabled)
@@ -256,10 +300,11 @@ namespace PizzaMaker
             if (!oliveButton.IsEnabled)
                 yourIngredients[5] = true;
 
-            GameplaySummary gameplaySummary = new GameplaySummary(yourIngredients, levelNumber, newContent, decision);
+            pointsCount[levelNumber-1] = levelSeconds.Seconds;
+            savePointsList();
+
+            GameplaySummary gameplaySummary = new GameplaySummary(yourIngredients, levelNumber, newContent, decision, pointsCount);
             gameplaySummary.Show();
         }
-
-        
     }
 }

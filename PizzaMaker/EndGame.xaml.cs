@@ -21,16 +21,19 @@ namespace PizzaMaker
     public partial class EndGame : UserControl
     {
         ContentControl newContent = new ContentControl();
+        int[] pointsCount = new int[3];
 
-        public EndGame(ContentControl newContent)
+        public EndGame(ContentControl newContent, int[] pointsCount)
         {
             InitializeComponent();
             this.newContent = newContent;
+            this.pointsCount = pointsCount;
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            this.newContent.Content = new StartGame(newContent);
+            this.newContent.Content = new StartGame(newContent, pointsCount);
+            
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

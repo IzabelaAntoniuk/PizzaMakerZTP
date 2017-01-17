@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PizzaMaker.Observer
 {
-    interface IObserver
+    public interface IObserver
     {
-        void update();
+        void updateGraph();
     }
 }

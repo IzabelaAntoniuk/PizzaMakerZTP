@@ -50,7 +50,7 @@
                         </TextBox>
 
                         <Border Width="100" Height="30"  BorderBrush="Black" BorderThickness="1" Margin="20">
-                            <Button Grid.Row="0" Width="100" Height="30" Name="statyButton"  Background="RosyBrown" BorderBrush="Black" Click="statyButton_Click">Statystyki</Button>
+                            <Button Grid.Row="0" Width="100" Height="30" Name="statyButton"  Background="RosyBrown" BorderBrush="Black" Click="Statistic_Button_Click">Statystyki</Button>
                         </Border>
                     </StackPanel>
                 </GroupBox>

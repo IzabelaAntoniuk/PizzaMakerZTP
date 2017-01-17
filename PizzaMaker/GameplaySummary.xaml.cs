@@ -25,8 +25,9 @@ namespace PizzaMaker
         private Visibility[] choosenIngredients = new Visibility[6];
         private int levelNumber = 0;
         ContentControl newContent = new ContentControl();
+        int[] pointsCount = new int[3];
 
-        public GameplaySummary(bool[] yourIngredients, int levelNumber, ContentControl newContent, int decision)
+        public GameplaySummary(bool[] yourIngredients, int levelNumber, ContentControl newContent, int decision, int[] pointsCount)
         {
             InitializeComponent();
 
@@ -35,6 +36,14 @@ namespace PizzaMaker
 
             this.levelNumber = levelNumber;
             this.newContent = newContent;
+            this.pointsCount = pointsCount;
+
+            if (levelNumber == 1)
+                pizzaImgTipLevel1.Visibility = Visibility.Visible;
+            if (levelNumber == 2)
+                pizzaImgTipLevel2.Visibility = Visibility.Visible;
+            if (levelNumber == 3)
+                pizzaImgTipLevel3.Visibility = Visibility.Visible;
 
             IPizza yourPizza = new Pizza(choosenIngredients);
 
@@ -102,8 +111,8 @@ namespace PizzaMaker
             this.Close();
 
             if (levelNumber > 3)
-                newContent.Content = new EndGame(newContent);
-            else newContent.Content = new Gameplay(1, levelNumber, newContent);
+                newContent.Content = new EndGame(newContent, pointsCount);
+            else newContent.Content = new Gameplay(1, levelNumber, newContent, pointsCount);
         }
 
     }
