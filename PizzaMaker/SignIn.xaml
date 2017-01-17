@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaMaker"
         mc:Ignorable="d"
-        Title="SignIn" Height="300" Width="300">
+        Title="SignIn" Height="300" Width="300" Background="SeaShell">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -15,15 +15,16 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label FontFamily="Tw Cen MT" FontSize="14" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Login</Label>
-        <TextBox Name="loginTB" Margin="2,2,25,2" Background="#E3E7E6" Height="30" Grid.Column="1" Grid.Row="0"></TextBox>
-        <Label FontFamily="Tw Cen MT" FontSize="14" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Haslo</Label>
-        <PasswordBox Name="hasloTB"  Margin="2,2,25,2" Background="#E3E7E6" Height="30" Grid.Column="1" Grid.Row="1"></PasswordBox>
-        <Button Grid.Row="4" Grid.Column="0" Name="ok" IsDefault="True" Margin="10,10,10,10" Padding="5,0,5,0" Background="#50344F" BorderBrush="Black" FontFamily="Tw Cen MT" FontWeight="Bold" FontSize="14" Foreground="White" Click="ok_Click">OK</Button>
-        <Button Grid.Row="4" Grid.Column="1" Name="anulujButton" IsCancel="True" Margin="10,10,10,10" Padding="5,0,5,0" Background="#50344F" BorderBrush="Black" FontFamily="Tw Cen MT" FontWeight="Bold" FontSize="14" Foreground="White" Click="anulujButton_Click">ANULUJ</Button>
-        <TextBlock Grid.Row="2" Grid.Column="0" Name="tbTime" />
-        <Button Grid.Row="2" Grid.Column="1" Content="heh" Click="Button_Click" Width="100" Height="20"></Button>
+        <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="15,0,0,0">Login:</Label>
+        <TextBox Name="nickname" Margin="2,2,25,2" Background="AntiqueWhite" Height="30" Width="100" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
+        <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="15,0,0,0">Haslo:</Label>
+        <PasswordBox Name="password" Margin="2,2,25,2" Background="AntiqueWhite" Height="30" Width="100" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"></PasswordBox>
+        <Border Grid.Row="4" Grid.Column="0" Width="100" Height="30" BorderBrush="Black" BorderThickness="1">
+            <Button Grid.Row="4" Grid.Column="0" Width="100" Height="30" Name="ok" IsDefault="True" Background="RosyBrown" BorderBrush="Black" Click="ok_Click">Ok</Button>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="1" Width="100" Height="30" BorderBrush="Black" BorderThickness="1" >
+            <Button Grid.Row="4" Grid.Column="1" Width="100" Height="30" Name="anulujButton" IsCancel="True" Background="RosyBrown" BorderBrush="Black" Click="cancelButton_Click">Anuluj</Button>
+        </Border>
     </Grid>
 </Window>

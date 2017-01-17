@@ -61,6 +61,15 @@
     <Compile Include="Command\Ingredient.cs" />
     <Compile Include="Command\IngredientList.cs" />
     <Compile Include="Decorator\Cheese.cs" />
+    <Compile Include="Decorator\Lettuce.cs" />
+    <Compile Include="Decorator\Mushroom.cs" />
+    <Compile Include="Decorator\Olive.cs" />
+    <Compile Include="Decorator\Tomato.cs" />
+    <Compile Include="EndGame.xaml.cs">
+      <DependentUpon>EndGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factory Method\Coffe.cs" />
+    <Compile Include="Factory Method\Water.cs" />
     <Compile Include="Gameplay.xaml.cs">
       <DependentUpon>Gameplay.xaml</DependentUpon>
     </Compile>
@@ -70,9 +79,6 @@
     <Compile Include="ImagePathConverter.cs" />
     <Compile Include="SignIn.xaml.cs">
       <DependentUpon>SignIn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SignUp.xaml.cs">
-      <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartGame.xaml.cs">
       <DependentUpon>StartGame.xaml</DependentUpon>
@@ -85,6 +91,10 @@
     <Compile Include="Template Method\AbstractLevel.cs" />
     <Compile Include="Template Method\EasyLevel.cs" />
     <Compile Include="Template Method\HardLevel.cs" />
+    <Page Include="EndGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gameplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,10 +123,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SignIn.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SignUp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -186,6 +192,41 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\zakonczone.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cup.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\coffe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\milk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lemon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sugar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tea.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\water.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

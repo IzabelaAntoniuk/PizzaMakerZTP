@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PizzaMaker.Factory_Method
 {
@@ -10,9 +11,8 @@ namespace PizzaMaker.Factory_Method
     {
         protected string drinkName;
 
-        //public AbstractDrink getDrink()
-        //{
-        //    return new AbstractDrink();
-        //}
+        public Visibility[] drinkIngredList = new Visibility[6];
+
+        public abstract AbstractDrink getDrink();
     }
 }

@@ -28,7 +28,7 @@ namespace PizzaMaker
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void start_Click(object sender, RoutedEventArgs e)
         {
             int decision = 0;
             if (easyLevel.IsChecked == true)

@@ -28,6 +28,14 @@ namespace PizzaMaker.Command
                     return "Images/cheese.png";
                 else if (nazwa == "ham")
                     return "Images/ham.png";
+                else if (nazwa == "tomato")
+                    return "Images/tomato.png";
+                else if (nazwa == "mushroom")
+                    return "Images/mushroom.png";
+                else if (nazwa == "lettuce")
+                    return "Images/lettuce.png";
+                else if (nazwa == "olive")
+                    return "Images/olive.png";
                 else
                     return "Images/blank.png";
             }

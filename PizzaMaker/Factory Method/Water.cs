@@ -7,19 +7,13 @@ using System.Windows;
 
 namespace PizzaMaker.Factory_Method
 {
-    class Tea : AbstractDrink
+    class Water : AbstractDrink
     {
-
-        public Tea()
+        public Water()
         {
-            drinkName = "Tea";
+            drinkName = "Water";
             for (int i = 0; i < drinkIngredList.Count(); i++)
                 drinkIngredList[i] = Visibility.Hidden;
-        }
-
-        public void addSugar()
-        {
-            drinkIngredList[1] = Visibility.Visible;
         }
 
         public void addLemon()
@@ -27,16 +21,15 @@ namespace PizzaMaker.Factory_Method
             drinkIngredList[0] = Visibility.Visible;
         }
 
-        public void addTea()
+        public void addWater()
         {
-            drinkIngredList[2] = Visibility.Visible;
+            drinkIngredList[4] = Visibility.Visible;
         }
 
         public override AbstractDrink getDrink()
         {
-            addSugar();
             addLemon();
-            addTea();
+            addWater();
             return this;
         }
     }
